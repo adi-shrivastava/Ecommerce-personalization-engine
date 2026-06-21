@@ -12,11 +12,12 @@ function randomname(names){
 async function seedusers(){
     const Users=await pool.query("Select * from users");
     for(let i=1; i<=1000; i++){
-        const userid='User${i}';
-        const age=(Math.floor(Math.random*40)+18);
+        const user='User${i}';
+        const age=(Math.floor(Math.random()*40)+18);
         const name=randomname(names);
         const city=randomitem(cities);
-        await pool.query('INSERT INTO USERS (userid,name,age,city) Values('${userid}','${name}',${age})');
+        console.log({name,age,city});
+        await pool.query('INSERT INTO USERS (name,age,city) Values($1,$2,$3)',[name,age,city])
     }
 }
 seedusers()
