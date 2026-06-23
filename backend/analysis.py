@@ -13,3 +13,11 @@ sum(case
 
 df=pd.read_sql(query,conn)
 print(df.head())
+matrix=df.pivot_table(
+    index="userid",
+    columns="productid",
+    values="score",
+    fill_value=0
+)
+print(matrix.shape)
+print(matrix.head())
