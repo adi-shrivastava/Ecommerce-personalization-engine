@@ -24,10 +24,10 @@ matrix=df.pivot_table(
 # print(matrix.sum(axis=0).sort_values(ascending=False))
 # print(matrix.sum(axis=1).sort_values(ascending=False))
 # print(matrix.loc[68].sort_values(ascending=False))
-print(matrix.stack().sort_values(ascending=False).head(10))
+# print(matrix.stack().sort_values(ascending=False).head(10))
 similiarity=cosine_similarity(matrix) #For finding similiarity between two rows
 df1=pd.DataFrame(similiarity,index=matrix.index,columns=matrix.index) #
-print(df1.shape)
-print(df1.loc[68].sort_values(ascending=False))
+# print(df1)
+# print(df1.loc[68].sort_values(ascending=False))
 print(matrix.loc[834].sort_values(ascending=False))
-print(matrix.loc[68].sort_values(ascending=False))
+print(matrix.loc[403].sort_values(ascending=False))
