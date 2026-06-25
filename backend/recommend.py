@@ -29,6 +29,7 @@ for users in similarusers:
         if product not in prodscores:
             prodscores[product]=score
         else:
+            
             prodscores[product]+=1
 for productid,scores in prodscores.items():
     print(productid,"   ",scores)
