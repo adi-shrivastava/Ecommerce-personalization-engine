@@ -20,7 +20,6 @@ similiarity=cosine_similarity(matrix)
 df1=pd.DataFrame(similiarity,index=matrix.index,columns=matrix.index) ## User-user similarity matrix 
 def recommend(userid):
     similiarusers=(df1.loc[userid].sort_values(ascending=False).index[1:6])
-    users=matrix.loc[userid]
     prodscores={}
     for user in similiarusers:
         products=(matrix.loc[user].sort_values(ascending=False).head(5))
@@ -33,3 +32,4 @@ def recommend(userid):
                 prodscores[product]+=scores
     return prodscores
 print(recommend(68))
+
