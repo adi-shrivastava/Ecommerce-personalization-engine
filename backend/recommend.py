@@ -21,8 +21,15 @@ df1=pd.DataFrame(similiarity,index=matrix.index,columns=matrix.index) ## User-us
 def recommend(userid):
     similiarusers=(df1.loc[userid].sort_values(ascending=False).index[1:6])
     users=matrix.loc[userid]
-    print(users)
-    return similiarusers
-similarusers=recommend(68)
-# for i in similarusers:
-#     print(i)
+    prodscores={}
+    for user in similiarusers:
+        products=(matrix.loc[user].sort_values(ascending=False).head(5))
+        for product,scores in products.items():
+            if(matrix.loc[userid,product] !=0):
+                continue
+            if(product not in prodscores):
+                prodscores[product]=scores
+            else:
+                prodscores[product]+=scores
+    return prodscores
+print(recommend(68))
