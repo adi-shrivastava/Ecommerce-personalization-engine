@@ -37,5 +37,5 @@ for product,score in value.items():
     print(pd.read_sql(query,conn,params=(product,)))
     print("Recommendation Score : ",score)
     print("-"*40)
-    
+
 
